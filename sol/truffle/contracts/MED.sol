@@ -19,7 +19,7 @@ contract MED is Context, IERC20MED, IERC20MEDMetadata {
     address _centralBank;
     address _treasureAccount;
 
-    string private _name = "Morrocan E-Dirham";
+    string private _name = "Moroccan E-Dirham";
     string private _symbol = "MED";
 
     modifier onlyCentralBank() {

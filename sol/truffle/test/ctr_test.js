@@ -19,6 +19,14 @@ contract('MED', async (accounts) => {
 
   });
 
+  it("Name and symbol should be correct", async() => {
+    emptyMedCtr = await MEDCtr.new(treasureAcc, {from: centralBankAcc});
+    let name = await emptyMedCtr.name();
+    let symbol = await emptyMedCtr.symbol();
+    assert.equal(name, "Moroccan E-Dirham", "Name should be correct");
+    assert.equal(symbol, "MED", "Symbol should be correct");
+  });
+
   it("should make the creator of the contract the owner", async() => {
     emptyMedCtr = await MEDCtr.new(treasureAcc, {from: centralBankAcc});
     let centralBankBalance = await emptyMedCtr.balanceOf(centralBankAcc);
