@@ -19,12 +19,16 @@ contract MED is Context, IERC20MED, IERC20MEDMetadata {
     address _centralBank;
     address _treasureAccount;
 
+    mapping (address => uint256) private _lastDayTax;
+    uint256 private _daysElapsed;
+    uint16 private _dailyTaxRate;
+
     string private _name = "Moroccan E-Dirham";
     string private _symbol = "MED";
 
     modifier onlyCentralBank() {
         require(
-            msg.sender == _centralBank,
+            _msgSender() == _centralBank,
             "Only Central Bank is allowed to call this"
         );
         _;
@@ -33,9 +37,10 @@ contract MED is Context, IERC20MED, IERC20MEDMetadata {
     /**
      * The treasure account is the "root" account on this crypto-currency
      */
-    constructor (address treasureAccount) {
+    constructor (address treasureAccount, uint16 dailyTaxRateMillionth) {
+        _centralBank = _msgSender();
         _treasureAccount = treasureAccount;
-        _centralBank = msg.sender;
+        _dailyTaxRate = dailyTaxRateMillionth;
     }
 
     function name() public view virtual override returns (string memory) {
@@ -62,6 +67,8 @@ contract MED is Context, IERC20MED, IERC20MEDMetadata {
     }
 
     function transfer(address recipient, uint256 amount) public virtual override returns (bool) {
+        _tax(_msgSender());
+        _tax(recipient);
         _transfer(_msgSender(), recipient, amount);
         return true;
     }
@@ -74,6 +81,14 @@ contract MED is Context, IERC20MED, IERC20MEDMetadata {
         _burn(_treasureAccount, amount);
     }
 
+    function sleep() public virtual onlyCentralBank {
+        _daysElapsed = _daysElapsed +1;
+    }
+
+    function tax(address taxPayer) public virtual onlyCentralBank {
+        _tax(taxPayer);
+    }
+
     /**
     *
     * * * * * * * * * * * * *
@@ -81,6 +96,15 @@ contract MED is Context, IERC20MED, IERC20MEDMetadata {
     * * * * * * * * * * * * *
     *
     */
+
+    function _tax(address taxPayer) internal virtual {
+        uint256 taxPayerdaysElapsed = _daysElapsed - _lastDayTax[taxPayer];
+        if (taxPayerdaysElapsed > 0) {
+        uint256 taxToPay = balanceOf(taxPayer) * taxPayerdaysElapsed * _dailyTaxRate / (1000 * 1000);
+        _lastDayTax[taxPayer] = _daysElapsed;
+        _transfer(taxPayer, _treasureAccount, taxToPay);
+        }
+    }
 
     function _transfer(address sender, address recipient, uint256 amount) internal virtual {
         require(sender != address(0), "ERC20: transfer from the zero address");
@@ -117,7 +141,7 @@ contract MED is Context, IERC20MED, IERC20MEDMetadata {
         uint256 accountBalance = _balances[account];
         require(accountBalance >= amount, "ERC20: burn amount exceeds balance");
         _balances[account] = accountBalance - amount;
-        _totalSupply -= amount;
+        _totalSupply -= amount; 
 
         emit Transfer(account, address(0), amount);
     }
