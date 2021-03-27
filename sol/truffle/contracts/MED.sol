@@ -23,6 +23,10 @@ contract MED is Context, IERC20MED, IERC20MEDMetadata {
     uint256 private _daysElapsed;
     uint16 private _dailyTaxRate;
 
+    mapping (address => uint256) private _lastMonthIncome;
+    uint256 private _monthsElapsed;
+    uint256 private _universalMonthlyIncome;
+
     string private _name = "Moroccan E-Dirham";
     string private _symbol = "MED";
 
@@ -37,10 +41,11 @@ contract MED is Context, IERC20MED, IERC20MEDMetadata {
     /**
      * The treasure account is the "root" account on this crypto-currency
      */
-    constructor (address treasureAccount, uint16 dailyTaxRateMillionth) {
+    constructor (address treasureAccount, uint16 dailyTaxRateMillionth, uint256 umi) {
         _centralBank = _msgSender();
         _treasureAccount = treasureAccount;
         _dailyTaxRate = dailyTaxRateMillionth;
+        _universalMonthlyIncome = umi;
     }
 
     function name() public view virtual override returns (string memory) {
@@ -73,6 +78,15 @@ contract MED is Context, IERC20MED, IERC20MEDMetadata {
         return true;
     }
 
+    function tax(address taxPayer) public virtual {
+        _tax(taxPayer);
+    }
+
+    function getIncome(address taxPayer) public virtual {
+        _tax(taxPayer);
+        _getIncome(taxPayer);
+    }
+
     function mint(uint256 amount) public virtual onlyCentralBank {
         _mint(_treasureAccount, amount);
     }
@@ -81,14 +95,14 @@ contract MED is Context, IERC20MED, IERC20MEDMetadata {
         _burn(_treasureAccount, amount);
     }
 
-    function sleep() public virtual onlyCentralBank {
+    function incrementDay() public virtual onlyCentralBank {
         _daysElapsed = _daysElapsed +1;
     }
 
-    function tax(address taxPayer) public virtual onlyCentralBank {
-        _tax(taxPayer);
+    function incrementMonth() public virtual onlyCentralBank {
+        _monthsElapsed = _monthsElapsed +1;
     }
-
+    
     /**
     *
     * * * * * * * * * * * * *
@@ -97,13 +111,29 @@ contract MED is Context, IERC20MED, IERC20MEDMetadata {
     *
     */
 
+    function _getIncome(address taxPayer) internal virtual {
+        if (taxPayer == _treasureAccount) {
+            return;
+        }
+        uint256 taxPayerMonthsElapsed = _monthsElapsed - _lastMonthIncome[taxPayer];
+        if (taxPayerMonthsElapsed == 0) {
+            return;
+        }
+        _lastMonthIncome[taxPayer] = _monthsElapsed;
+        _transfer(_treasureAccount, taxPayer, _universalMonthlyIncome);
+    }
+
     function _tax(address taxPayer) internal virtual {
+        if (taxPayer == _treasureAccount) {
+            return;
+        }
         uint256 taxPayerdaysElapsed = _daysElapsed - _lastDayTax[taxPayer];
-        if (taxPayerdaysElapsed > 0) {
+        if (taxPayerdaysElapsed == 0) {
+            return;
+        }
         uint256 taxToPay = balanceOf(taxPayer) * taxPayerdaysElapsed * _dailyTaxRate / (1000 * 1000);
         _lastDayTax[taxPayer] = _daysElapsed;
         _transfer(taxPayer, _treasureAccount, taxToPay);
-        }
     }
 
     function _transfer(address sender, address recipient, uint256 amount) internal virtual {
