@@ -80,4 +80,29 @@ contract('MED', async (accounts) => {
     assert.equal(balTreasure, 26000, "No tax added");
   });
 
+  it("New universal income", async() => {
+    tmpMedCtr = await MEDCtr.new(treasureAcc, 5, 1000, {from: centralBankAcc});
+    await tmpMedCtr.mint(50000, {from: centralBankAcc});
+    await tmpMedCtr.transfer(citizen1, 20000, {from: treasureAcc});
+
+    let bal1_0 = await tmpMedCtr.balanceOf(citizen1);
+
+    // Two one month after ...
+    // not realistic because days should have been incremented
+    await tmpMedCtr.incrementMonth({from: centralBankAcc});
+    await tmpMedCtr.updateAccount(citizen1, {from: citizen2});
+
+    let bal1_1 = await tmpMedCtr.balanceOf(citizen1);
+
+    await tmpMedCtr.setNewBasicIncome(2000, {from: centralBankAcc});
+    await tmpMedCtr.incrementMonth({from: centralBankAcc});
+    await tmpMedCtr.updateAccount(citizen1, {from: citizen2});
+
+    let bal1_2 = await tmpMedCtr.balanceOf(citizen1);
+
+    assert.equal(bal1_0, 20000, "Initial account");
+    assert.equal(bal1_1, 21000, "After first month of basic income");
+    assert.equal(bal1_2, 23000, "After income has changed");
+  });
+
 })

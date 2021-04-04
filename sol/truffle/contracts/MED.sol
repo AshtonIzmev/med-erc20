@@ -20,12 +20,12 @@ contract MED is Context, IERC20MED, IERC20MEDMetadata {
     address _treasureAccount;
 
     mapping (address => uint256) private _lastDayTax;
-    uint256 private _daysElapsed;
-    uint16 private _dailyTaxRate;
+    uint256 public daysElapsed;
+    uint16 public dailyTaxRate;
 
     mapping (address => uint256) private _lastMonthIncome;
-    uint256 private _monthsElapsed;
-    uint256 private _universalMonthlyIncome;
+    uint256 public monthsElapsed;
+    uint256 public universalMonthlyIncome;
 
     string private _name = "Moroccan E-Dirham";
     string private _symbol = "MED";
@@ -47,8 +47,8 @@ contract MED is Context, IERC20MED, IERC20MEDMetadata {
     constructor (address treasureAccount, uint16 annualTaxRatePercent, uint256 umi) {
         _centralBank = _msgSender();
         _treasureAccount = treasureAccount;
-        _dailyTaxRate = annualTaxRatePercent * 10000 / 365;
-        _universalMonthlyIncome = umi;
+        dailyTaxRate = annualTaxRatePercent * 10000 / 365;
+        universalMonthlyIncome = umi;
     }
 
     function name() public view virtual override returns (string memory) {
@@ -74,6 +74,14 @@ contract MED is Context, IERC20MED, IERC20MEDMetadata {
         return _balances[account];
     }
 
+    function elapsedTaxDaysOf(address account) public view virtual returns (uint256) {
+        return _lastDayTax[account];
+    }
+
+    function elapsedIncomeMonthOf(address account) public view virtual returns (uint256) {
+        return _lastMonthIncome[account];
+    }
+
     function transfer(address recipient, uint256 amount) public virtual override returns (bool) {
         _updateAccount(_msgSender());
         _updateAccount(recipient);
@@ -94,11 +102,19 @@ contract MED is Context, IERC20MED, IERC20MEDMetadata {
     }
 
     function incrementDay() public virtual onlyCentralBank {
-        _daysElapsed = _daysElapsed +1;
+        daysElapsed = daysElapsed +1;
     }
 
     function incrementMonth() public virtual onlyCentralBank {
-        _monthsElapsed = _monthsElapsed +1;
+        monthsElapsed = monthsElapsed +1;
+    }
+
+    function setNewDailyTaxRate(uint16 newRate) public virtual onlyCentralBank {
+        dailyTaxRate = newRate;
+    }
+
+    function setNewBasicIncome(uint256 newIncome) public virtual onlyCentralBank {
+        universalMonthlyIncome = newIncome;
     }
     
     /**
@@ -118,24 +134,24 @@ contract MED is Context, IERC20MED, IERC20MEDMetadata {
         if (taxPayer == _treasureAccount) {
             return;
         }
-        uint256 taxPayerMonthsElapsed = _monthsElapsed - _lastMonthIncome[taxPayer];
+        uint256 taxPayerMonthsElapsed = monthsElapsed - _lastMonthIncome[taxPayer];
         if (taxPayerMonthsElapsed == 0) {
             return;
         }
-        _lastMonthIncome[taxPayer] = _monthsElapsed;
-        _transfer(_treasureAccount, taxPayer, taxPayerMonthsElapsed * _universalMonthlyIncome);
+        _lastMonthIncome[taxPayer] = monthsElapsed;
+        _transfer(_treasureAccount, taxPayer, taxPayerMonthsElapsed * universalMonthlyIncome);
     }
 
     function _tax(address taxPayer) internal virtual {
         if (taxPayer == _treasureAccount) {
             return;
         }
-        uint256 taxPayerdaysElapsed = _daysElapsed - _lastDayTax[taxPayer];
+        uint256 taxPayerdaysElapsed = daysElapsed - _lastDayTax[taxPayer];
         if (taxPayerdaysElapsed == 0) {
             return;
         }
-        uint256 taxToPay = _balances[taxPayer] * taxPayerdaysElapsed * _dailyTaxRate / (1000 * 1000);
-        _lastDayTax[taxPayer] = _daysElapsed;
+        uint256 taxToPay = _balances[taxPayer] * taxPayerdaysElapsed * dailyTaxRate / (1000 * 1000);
+        _lastDayTax[taxPayer] = daysElapsed;
         _transfer(taxPayer, _treasureAccount, taxToPay);
     }
 
