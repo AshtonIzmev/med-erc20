@@ -21,7 +21,7 @@ contract MED is Context, IERC20MED, IERC20MEDMetadata {
 
     mapping (address => uint256) private _lastDayTax;
     uint256 public daysElapsed;
-    uint16 public dailyTaxRate;
+    uint32 public dailyTaxRate;
 
     mapping (address => uint256) private _lastMonthIncome;
     uint256 public monthsElapsed;
@@ -44,7 +44,7 @@ contract MED is Context, IERC20MED, IERC20MEDMetadata {
      *                              tax is applied daily
      * param umi : Universal Monthly Income
      */
-    constructor (address treasureAccount, uint16 annualTaxRatePercent, uint256 umi) {
+    constructor (address treasureAccount, uint32 annualTaxRatePercent, uint256 umi) {
         _centralBank = _msgSender();
         _treasureAccount = treasureAccount;
         dailyTaxRate = annualTaxRatePercent * 10000 / 365;
@@ -109,7 +109,7 @@ contract MED is Context, IERC20MED, IERC20MEDMetadata {
         monthsElapsed = monthsElapsed +1;
     }
 
-    function setNewDailyTaxRate(uint16 newRate) public virtual onlyCentralBank {
+    function setNewDailyTaxRate(uint32 newRate) public virtual onlyCentralBank {
         dailyTaxRate = newRate;
     }
 

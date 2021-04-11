@@ -24,6 +24,14 @@ contract('MED', async (accounts) => {
     assert.equal(symbol, "MED", "Symbol should be correct");
   });
 
+  it("Contract creation with various parameters", async() => {
+    await MEDCtr.new(treasureAcc, 5, 1000, {from: centralBankAcc});
+    await MEDCtr.new(treasureAcc, 95, 1000, {from: centralBankAcc});
+    await MEDCtr.new(treasureAcc, 5, 5000, {from: centralBankAcc});
+    await MEDCtr.new(treasureAcc, 15, 100, {from: centralBankAcc});
+    await MEDCtr.new(treasureAcc, 55, 500, {from: centralBankAcc});
+  });
+
   it("should make the creator of the contract the owner", async() => {
     emptyMedCtr = await MEDCtr.new(treasureAcc, 5, 1000, {from: centralBankAcc});
     let centralBankBalance = await emptyMedCtr.balanceOf(centralBankAcc);
