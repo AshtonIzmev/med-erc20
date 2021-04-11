@@ -30,6 +30,8 @@ contract MED is Context, IERC20MED, IERC20MEDMetadata {
     string private _name = "Moroccan E-Dirham";
     string private _symbol = "MED";
 
+    bool private _allowMint = false;
+
     modifier onlyCentralBank() {
         require(
             _msgSender() == _centralBank,
@@ -43,12 +45,16 @@ contract MED is Context, IERC20MED, IERC20MEDMetadata {
      * param annualTaxRatePercent : percentage of the account that would be taxed in a year
      *                              tax is applied daily
      * param umi : Universal Monthly Income
+     * param allowMint : Should we allow central bank to mint new tokens ?
      */
-    constructor (address treasureAccount, uint32 annualTaxRatePercent, uint256 umi) {
+    constructor (address treasureAccount, uint32 annualTaxRatePercent, uint256 umi, 
+        bool allowMint, uint256 initialMint) {
         _centralBank = _msgSender();
         _treasureAccount = treasureAccount;
         dailyTaxRate = annualTaxRatePercent * 10000 / 365;
         universalMonthlyIncome = umi;
+        _allowMint = allowMint;
+        _mint(_treasureAccount, initialMint);
     }
 
     function name() public view virtual override returns (string memory) {
@@ -94,6 +100,7 @@ contract MED is Context, IERC20MED, IERC20MEDMetadata {
     }
 
     function mint(uint256 amount) public virtual onlyCentralBank {
+        require(_allowMint);
         _mint(_treasureAccount, amount);
     }
 

@@ -16,8 +16,7 @@ contract('MED', async (accounts) => {
   let citizen6    = accounts[6];
 
   it("Tax after two days", async() => {
-    tmpMedCtr = await MEDCtr.new(treasureAcc, 5, 1000, {from: centralBankAcc});
-    await tmpMedCtr.mint(8000, {from: centralBankAcc});
+    tmpMedCtr = await MEDCtr.new(treasureAcc, 5, 1000, false, 8000, {from: centralBankAcc});
     await tmpMedCtr.transfer(citizen1, 3700, {from: treasureAcc});
     await tmpMedCtr.transfer(citizen2, 3600, {from: treasureAcc});
 
@@ -41,8 +40,7 @@ contract('MED', async (accounts) => {
   });
 
   it("No taxation twice in a day", async() => {
-    tmpMedCtr = await MEDCtr.new(treasureAcc, 5, 1000, {from: centralBankAcc});
-    await tmpMedCtr.mint(50000, {from: centralBankAcc});
+    tmpMedCtr = await MEDCtr.new(treasureAcc, 5, 1000, false, 50000, {from: centralBankAcc});
     await tmpMedCtr.transfer(citizen1, 20000, {from: treasureAcc});
 
     await tmpMedCtr.transfer(citizen5, 20, {from: citizen1});
@@ -66,8 +64,7 @@ contract('MED', async (accounts) => {
   });
 
   it("Central Bank force taxation", async() => {
-    tmpMedCtr = await MEDCtr.new(treasureAcc, 5, 1000, {from: centralBankAcc});
-    await tmpMedCtr.mint(50000, {from: centralBankAcc});
+    tmpMedCtr = await MEDCtr.new(treasureAcc, 5, 1000, false, 50000, {from: centralBankAcc});
     await tmpMedCtr.transfer(citizen1, 20000, {from: treasureAcc});
 
     let bal1_1 = await tmpMedCtr.balanceOf(citizen1);
