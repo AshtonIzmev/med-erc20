@@ -35,6 +35,27 @@ contract('MED', async (accounts) => {
     assert.equal(balTreasure, 29005, "5 e-dh of tax added and universal income taken");
   });
 
+  it("Tax behavior after two days and one month", async() => {
+    tmpMedCtr = await MEDCtr.new(treasureAcc, 5, 1000, false, 50000, {from: centralBankAcc});
+    await tmpMedCtr.transfer(citizen1, 20000, {from: treasureAcc});
+
+    // Two days and one month after ...
+    await tmpMedCtr.incrementDay({from: centralBankAcc});
+    await tmpMedCtr.incrementDay({from: centralBankAcc});
+    await tmpMedCtr.incrementMonth({from: centralBankAcc});
+    await tmpMedCtr.incrementMonth({from: centralBankAcc});
+    await tmpMedCtr.incrementMonth({from: centralBankAcc});
+    await tmpMedCtr.incrementMonth({from: centralBankAcc});
+    await tmpMedCtr.incrementMonth({from: centralBankAcc});
+    await tmpMedCtr.incrementMonth({from: centralBankAcc});
+    await tmpMedCtr.incrementMonth({from: centralBankAcc});
+
+    await tmpMedCtr.updateAccount(citizen1, {from: citizen2});
+    let bal1_2 = await tmpMedCtr.balanceOf(citizen1);
+
+    assert.equal(bal1_2, 26993, "7 e-dh of tax taken (two days) and universal income added");    
+  });
+
   it("Universal income for everyone after 2 months", async() => {
     tmpMedCtr = await MEDCtr.new(treasureAcc, 5, 1000, false, 50000,{from: centralBankAcc});
     await tmpMedCtr.transfer(citizen1, 20000, {from: treasureAcc});

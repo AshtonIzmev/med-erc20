@@ -133,8 +133,8 @@ contract MED is Context, IERC20MED, IERC20MEDMetadata {
     */
 
     function _updateAccount(address taxPayer) internal virtual {
-        _tax(taxPayer);
         _getIncome(taxPayer);
+        _tax(taxPayer);
     }
 
     function _getIncome(address taxPayer) internal virtual {
