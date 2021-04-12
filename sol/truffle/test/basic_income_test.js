@@ -72,7 +72,7 @@ contract('MED', async (accounts) => {
 
     let balTreasure = await tmpMedCtr.balanceOf(treasureAcc);
     assert.equal(bal1_1, 20000, "Initial account");
-    assert.equal(bal1_2, 22000, "5 e-dh of tax taken (two days) and universal income added");
+    assert.equal(bal1_2, 22000, "Universal income added");
     assert.equal(balTreasure, 28000, "No tax added");
   });
 

@@ -132,32 +132,42 @@ contract MED is Context, IERC20MED, IERC20MEDMetadata {
     *
     */
 
-    function _updateAccount(address taxPayer) internal virtual {
-        _getIncome(taxPayer);
-        _tax(taxPayer);
-    }
-
-    function _getIncome(address taxPayer) internal virtual {
+    function _calculateIncome(address taxPayer) internal view virtual returns (uint256) {
         if (taxPayer == _treasureAccount) {
-            return;
+            return 0;
         }
         uint256 taxPayerMonthsElapsed = monthsElapsed - _lastMonthIncome[taxPayer];
         if (taxPayerMonthsElapsed == 0) {
-            return;
+            return 0;
         }
-        _lastMonthIncome[taxPayer] = monthsElapsed;
-        _transfer(_treasureAccount, taxPayer, taxPayerMonthsElapsed * universalMonthlyIncome);
+        return taxPayerMonthsElapsed * universalMonthlyIncome;
     }
 
-    function _tax(address taxPayer) internal virtual {
+    function _calculateTax(address taxPayer) internal view virtual returns (uint256) {
         if (taxPayer == _treasureAccount) {
-            return;
+            return 0;
         }
         uint256 taxPayerdaysElapsed = daysElapsed - _lastDayTax[taxPayer];
         if (taxPayerdaysElapsed == 0) {
-            return;
+            return 0;
         }
         uint256 taxToPay = _balances[taxPayer] * taxPayerdaysElapsed * dailyTaxRate / (1000 * 1000);
+        return taxToPay;
+    }
+
+    function _updateAccount(address taxPayer) internal virtual{
+        _transferIncome(taxPayer);
+        _deductTax(taxPayer);
+    }
+
+    function _transferIncome(address taxPayer) internal virtual {
+        uint256 umi = _calculateIncome(taxPayer);
+        _lastMonthIncome[taxPayer] = monthsElapsed;
+        _transfer(_treasureAccount, taxPayer, umi);
+    }
+
+    function _deductTax(address taxPayer) internal virtual {
+        uint256 taxToPay = _calculateTax(taxPayer);
         _lastDayTax[taxPayer] = daysElapsed;
         _transfer(taxPayer, _treasureAccount, taxToPay);
     }
