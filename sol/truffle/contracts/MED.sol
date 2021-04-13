@@ -30,7 +30,7 @@ contract MED is Context, IERC20MED, IERC20MEDMetadata {
     string private _name = "Moroccan E-Dirham";
     string private _symbol = "MED";
 
-    bool private _allowMint = false;
+    bool public allowMint = false;
 
     modifier onlyCentralBank() {
         require(
@@ -48,12 +48,12 @@ contract MED is Context, IERC20MED, IERC20MEDMetadata {
      * param allowMint : Should we allow central bank to mint new tokens ?
      */
     constructor (address treasureAccount, uint32 annualTaxRatePercent, uint256 umi, 
-        bool allowMint, uint256 initialMint) {
+        bool allowMintArg, uint256 initialMint) {
         _centralBank = _msgSender();
         _treasureAccount = treasureAccount;
         dailyTaxRate = annualTaxRatePercent * 10000 / 365;
         universalMonthlyIncome = umi;
-        _allowMint = allowMint;
+        allowMint = allowMintArg;
         _mint(_treasureAccount, initialMint);
     }
 
@@ -100,7 +100,7 @@ contract MED is Context, IERC20MED, IERC20MEDMetadata {
     }
 
     function mint(uint256 amount) public virtual onlyCentralBank {
-        require(_allowMint);
+        require(allowMint);
         _mint(_treasureAccount, amount);
     }
 
