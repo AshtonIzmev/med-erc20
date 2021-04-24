@@ -4,7 +4,7 @@ pragma solidity ^0.8.0;
 
 import "../ERC20/IERC20.sol";
 import "../ERC20/extensions/IERC20Metadata.sol";
-import "../ERC20/utils/Context.sol";
+import "../utils/Context.sol";
 
 /**
  * @dev Implementation of the {IERC20} interface.
