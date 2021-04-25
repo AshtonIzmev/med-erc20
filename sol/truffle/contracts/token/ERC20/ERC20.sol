@@ -2,9 +2,9 @@
 
 pragma solidity ^0.8.0;
 
-import "../ERC20/IERC20.sol";
-import "../ERC20/extensions/IERC20Metadata.sol";
-import "../utils/Context.sol";
+import "./IERC20.sol";
+import "./extensions/IERC20Metadata.sol";
+import "../../utils/Context.sol";
 
 /**
  * @dev Implementation of the {IERC20} interface.
@@ -76,7 +76,7 @@ contract ERC20 is Context, IERC20, IERC20Metadata {
      *
      * Tokens usually opt for a value of 18, imitating the relationship between
      * Ether and Wei. This is the value {ERC20} uses, unless this function is
-     * overloaded;
+     * overridden;
      *
      * NOTE: This information is only used for _display_ purposes: it in
      * no way affects any of the arithmetic of the contract, including
