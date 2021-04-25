@@ -2,8 +2,8 @@
 
 pragma solidity ^0.8.0;
 
-import "../utils/Context.sol";
-import "../MED.sol";
+import "../../utils/Context.sol";
+import "../med/MED.sol";
 
 /**
  * @dev Banking smart contracts - Term Deposit (Depot A Terme)
