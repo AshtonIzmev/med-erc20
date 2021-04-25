@@ -3,6 +3,7 @@
 pragma solidity ^0.8.0;
 
 import "../ERC20/ERC20.sol";
+import "../../utils/Counters.sol";
 
 /**
  * @dev Implementation of the {ERC20} interface as a sovereign moroccan crypto-currency
@@ -10,15 +11,17 @@ import "../ERC20/ERC20.sol";
  */
 contract MED is ERC20 {
 
+    using Counters for Counters.Counter;
+
     address _centralBank;
     address _treasureAccount;
 
     mapping (address => uint256) private _lastDayTax;
-    uint256 public daysElapsed;
+    Counters.Counter public daysElapsed;
     uint32 public dailyTaxRate;
 
     mapping (address => uint256) private _lastMonthIncome;
-    uint256 public monthsElapsed;
+    Counters.Counter public monthsElapsed;
     uint256 public universalMonthlyIncome;
 
     bool public allowMint = false;
@@ -85,11 +88,11 @@ contract MED is ERC20 {
     }
 
     function incrementDay() public virtual onlyCentralBank {
-        daysElapsed = daysElapsed +1;
+        daysElapsed.increment();
     }
 
     function incrementMonth() public virtual onlyCentralBank {
-        monthsElapsed = monthsElapsed +1;
+        monthsElapsed.increment();
     }
 
     function setNewDailyTaxRate(uint32 newRate) public virtual onlyCentralBank {
@@ -112,7 +115,7 @@ contract MED is ERC20 {
         if (taxPayer == _treasureAccount) {
             return 0;
         }
-        uint256 taxPayerMonthsElapsed = monthsElapsed - _lastMonthIncome[taxPayer];
+        uint256 taxPayerMonthsElapsed = monthsElapsed.current() - _lastMonthIncome[taxPayer];
         if (taxPayerMonthsElapsed == 0) {
             return 0;
         }
@@ -123,7 +126,7 @@ contract MED is ERC20 {
         if (taxPayer == _treasureAccount) {
             return 0;
         }
-        uint256 taxPayerdaysElapsed = daysElapsed - _lastDayTax[taxPayer];
+        uint256 taxPayerdaysElapsed = daysElapsed.current() - _lastDayTax[taxPayer];
         if (taxPayerdaysElapsed == 0) {
             return 0;
         }
@@ -138,13 +141,13 @@ contract MED is ERC20 {
 
     function _transferIncome(address taxPayer) internal virtual {
         uint256 umi = _calculateIncome(taxPayer);
-        _lastMonthIncome[taxPayer] = monthsElapsed;
+        _lastMonthIncome[taxPayer] = monthsElapsed.current();
         _transfer(_treasureAccount, taxPayer, umi);
     }
 
     function _deductTax(address taxPayer) internal virtual {
         uint256 taxToPay = _calculateTax(taxPayer);
-        _lastDayTax[taxPayer] = daysElapsed;
+        _lastDayTax[taxPayer] = daysElapsed.current();
         _transfer(taxPayer, _treasureAccount, taxToPay);
     }
 }

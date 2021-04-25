@@ -4,6 +4,7 @@ pragma solidity ^0.8.0;
 
 import "../../utils/Context.sol";
 import "../med/MED.sol";
+import "../nft/FP.sol";
 
 /**
  * @dev Banking smart contracts - Term Deposit (Depot A Terme)
@@ -11,18 +12,13 @@ import "../med/MED.sol";
 contract DAT is Context {
 
     MED public medToken;
+    FP public fpToken;
 
     uint256 public minimumAmount;
     uint16 public dayDuration;
     uint16 public interestRate;
 
-    struct Product {
-        uint256 _subscriptionAmount;
-        uint256 _subscriptionDate;
-    }
-
-    mapping (address => Product) private _subscriptions;
-    uint256 public daysElapsed;
+    uint256 public currentDayTime;
 
     address _issuingBank;
 
@@ -40,17 +36,19 @@ contract DAT is Context {
      * param dayDuration        duration of the DAT (in days)
      * param interestRate       interest rate of the DAT
      */
-    constructor (uint256 minimumAmountArg, uint16 dayDurationArg, uint16 interestRateArg, 
-            address medTokenArg) {
+    constructor (uint256 minimumAmount_, uint16 dayDuration_, uint16 interestRate_, 
+            address medToken_) {
         _issuingBank = _msgSender();
-        minimumAmount = minimumAmountArg;
-        dayDuration = dayDurationArg;
-        interestRate = interestRateArg;
-        medToken = MED(medTokenArg);
+        minimumAmount = minimumAmount_;
+        dayDuration = dayDuration_;
+        interestRate = interestRate_;
+
+        medToken = MED(medToken_);
+        fpToken = new FP("DAT Share", "DAT", interestRate_, dayDuration_);
     }
 
     function incrementDay() public virtual onlyIssuingBank {
-        daysElapsed = daysElapsed +1;
+        currentDayTime = currentDayTime +1;
     }
 
     /**
@@ -58,31 +56,30 @@ contract DAT is Context {
      */
     function subscribeDat(uint256 depositAmount) public virtual {
         require(depositAmount >= minimumAmount, "Deposit amount is less than minimum required");
-        require(_subscriptions[_msgSender()]._subscriptionAmount == 0, "Already subscribed");
         medToken.transferFrom(_msgSender(), address(this), depositAmount);
-        _subscriptions[_msgSender()] = Product(depositAmount, daysElapsed);
+        fpToken.create(_msgSender(), depositAmount, currentDayTime);
     }
 
     /**
      * Cancelling a DAT is getting reimbursed your initial deposit at anytime without any interest
      */
-    function cancelDat() public virtual {
-        require(_subscriptions[_msgSender()]._subscriptionAmount > 0, "No active subscription");
-        uint256 amount = _subscriptions[_msgSender()]._subscriptionAmount;
-        delete _subscriptions[_msgSender()];
-        medToken.transfer(_msgSender(), amount);
+    function cancelDat(uint256 tokenId) public virtual {
+        require(fpToken.ownerOf(tokenId) == _msgSender());
+        uint256 initialAmount = fpToken.getSubAmount(tokenId);
+        medToken.transfer(_msgSender(), initialAmount);
+        fpToken.destroy(tokenId);
     }
 
     /**
      * Get your principal and your interest once the term ended
      */
-    function payDat() public virtual {
-        require(_subscriptions[_msgSender()]._subscriptionAmount > 0, "No active subscription");
-        require(daysElapsed - _subscriptions[_msgSender()]._subscriptionDate > dayDuration, 
+    function payDat(uint256 tokenId) public virtual {
+        require(fpToken.ownerOf(tokenId) == _msgSender());
+        require(currentDayTime - fpToken.getSubDate(tokenId) > dayDuration, 
             "Too early to be payed");
-        uint256 amount = _subscriptions[_msgSender()]._subscriptionAmount * (100+interestRate) / 100;
-        delete _subscriptions[_msgSender()];
-        medToken.transfer(_msgSender(), amount);
+        uint256 initialAmount = fpToken.getSubAmount(tokenId);
+        medToken.transfer(_msgSender(), initialAmount * (100+interestRate) / 100);
+        fpToken.destroy(tokenId);        
     }
 
 }
