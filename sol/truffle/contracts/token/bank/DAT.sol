@@ -15,10 +15,8 @@ contract DAT is Context {
     FP public fpToken;
 
     uint256 public minimumAmount;
-    uint16 public dayDuration;
+    uint256 public dayDuration;
     uint16 public interestRate;
-
-    uint256 public currentDayTime;
 
     address _issuingBank;
 
@@ -36,7 +34,7 @@ contract DAT is Context {
      * param dayDuration        duration of the DAT (in days)
      * param interestRate       interest rate of the DAT
      */
-    constructor (uint256 minimumAmount_, uint16 dayDuration_, uint16 interestRate_, 
+    constructor (uint256 minimumAmount_, uint256 dayDuration_, uint16 interestRate_, 
             address medToken_) {
         _issuingBank = _msgSender();
         minimumAmount = minimumAmount_;
@@ -47,17 +45,13 @@ contract DAT is Context {
         fpToken = new FP("DAT Share", "DAT", interestRate_, dayDuration_);
     }
 
-    function incrementDay() public virtual onlyIssuingBank {
-        currentDayTime = currentDayTime +1;
-    }
-
     /**
      * Subscribe a new term deposit
      */
     function subscribeDat(uint256 depositAmount) public virtual {
         require(depositAmount >= minimumAmount, "Deposit amount is less than minimum required");
         medToken.transferFrom(_msgSender(), address(this), depositAmount);
-        fpToken.create(_msgSender(), depositAmount, currentDayTime);
+        fpToken.create(_msgSender(), depositAmount, medToken.daysElapsed());
     }
 
     /**
@@ -75,7 +69,7 @@ contract DAT is Context {
      */
     function payDat(uint256 tokenId) public virtual {
         require(fpToken.ownerOf(tokenId) == _msgSender());
-        require(currentDayTime - fpToken.getSubDate(tokenId) > dayDuration, 
+        require(medToken.daysElapsed() - fpToken.getSubDate(tokenId) > dayDuration, 
             "Too early to be payed");
         uint256 initialAmount = fpToken.getSubAmount(tokenId);
         medToken.transfer(_msgSender(), initialAmount * (100+interestRate) / 100);

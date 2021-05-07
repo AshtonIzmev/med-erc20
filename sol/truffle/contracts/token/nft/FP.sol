@@ -14,7 +14,7 @@ contract FP is ERC721 {
     Counters.Counter private _tokenIds;
 
     uint16 public interestRate;
-    uint16 public maturity;
+    uint256 public maturity;
 
     struct Product {
         uint256 _subscriptionAmount;
@@ -30,7 +30,7 @@ contract FP is ERC721 {
         _;
     }
 
-    constructor(string memory name_, string memory symbol_, uint16 interestRate_, uint16 maturity_) 
+    constructor(string memory name_, string memory symbol_, uint16 interestRate_, uint256 maturity_) 
         ERC721(name_, symbol_) {
             creator = _msgSender();
             interestRate = interestRate_;
