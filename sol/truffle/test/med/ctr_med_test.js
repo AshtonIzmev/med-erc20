@@ -2,8 +2,8 @@ const MEDCtr = artifacts.require("MED");
 
 contract('MED', async (accounts) => {
  
-  let tryCatch = require("./exceptions.js").tryCatch;
-  let errTypes = require("./exceptions.js").errTypes;
+  let tryCatch = require("../utils/exceptions.js").tryCatch;
+  let errTypes = require("../utils/exceptions.js").errTypes;
 
   let emptyMedCtr;
   let centralBankAcc = accounts[0];
