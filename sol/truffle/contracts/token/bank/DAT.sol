@@ -8,6 +8,7 @@ import "../nft/FP.sol";
 
 /**
  * @dev Banking smart contracts - Term Deposit (Depot A Terme)
+ * @author AshtonIzmev
  */
 contract DAT is Context {
 

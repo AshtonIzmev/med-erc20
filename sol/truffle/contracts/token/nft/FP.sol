@@ -6,7 +6,8 @@ import "../../token/ERC721/ERC721.sol";
 import "../../utils/Counters.sol";
 
 /**
-    NFT representing a share of a finance product (term deposit, crowdunfing, investment etc.)
+ * @title NFT representing a share of a finance product (term deposit, crowdunfing, investment etc.)
+ * @author AshtonIzmev
  */
 contract FP is ERC721 {
     

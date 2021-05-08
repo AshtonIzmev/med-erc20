@@ -7,7 +7,7 @@ import "../../utils/Counters.sol";
 
 /**
  * @dev Implementation of the {ERC20} interface as a sovereign moroccan crypto-currency
- *
+ * @author AshtonIzmev
  */
 contract MED is ERC20 {
 
