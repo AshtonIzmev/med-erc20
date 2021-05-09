@@ -32,7 +32,7 @@ contract FP is ERC721 {
             issuingBank = _msgSender();
     }
 
-    function _baseURI() internal virtual view override returns (string memory) {
+    function _baseURI() internal virtual pure override returns (string memory) {
         return "https://curieux.ma/";
     }
 

@@ -12,7 +12,7 @@ import "../med/MED.sol";
  * @title ERC721 Financial Product Marketplace
  * @author AshtonIzmev
  */
-contract Marketplace is Context {
+contract Marketplace is IERC721Receiver, Context {
 
     using Counters for Counters.Counter;
     using EnumerableSet for EnumerableSet.UintSet;
@@ -41,7 +41,7 @@ contract Marketplace is Context {
         _;
     }
 
-    constructor (address fpToken_, address medToken_, uint256 sellFee_, uint256 withdrawFee_) {
+    constructor (uint256 sellFee_, uint256 withdrawFee_, address medToken_, address fpToken_) {
         _issuingBank = _msgSender();
         fpToken = FP(fpToken_);
         medToken = MED(medToken_);
@@ -82,5 +82,23 @@ contract Marketplace is Context {
         medToken.transfer(_issuingBank, totalFees);
         totalFees = 0;
     }
+
+    function isToSell(uint256 tokenId) public virtual view returns (bool) {
+        return _tokenIds.contains(tokenId);
+    }
+
+    function getTokenIdOffer(uint256 idx) public virtual view returns (uint256) {
+        require(idx < _tokenIds.length(), "Idx overflow");
+        return _tokenIds.at(idx);
+    }
+
+    function getOfferLength() public virtual view returns (uint256) {
+        return _tokenIds.length();
+    }
+
+     function onERC721Received(address, address, uint256, bytes calldata) 
+            pure external override returns (bytes4) { 
+        return this.onERC721Received.selector;
+     } 
 
 }
