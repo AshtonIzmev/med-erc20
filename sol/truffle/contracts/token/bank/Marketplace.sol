@@ -59,7 +59,9 @@ contract Marketplace is IERC721Receiver, Context {
     }
 
     function withdraw(uint256 tokenId_) public virtual {
-        require(fpToken.ownerOf(tokenId_) == _msgSender(), "You are not the owner of this token");
+        require(_tokenIds.contains(tokenId_), "Token offer does not exist");
+        Offer memory offer = offers[tokenId_];
+        require(offer._tokenOwner == _msgSender(), "You are not the owner of this token");
         require(medToken.allowance(_msgSender(), address(this)) >= withdrawFee, "Prepare an allowance with the correct amount in order to withdraw");
         medToken.transferFrom(_msgSender(), address(this), withdrawFee);
         fpToken.safeTransferFrom(address(this), _msgSender(), tokenId_);
