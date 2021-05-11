@@ -15,7 +15,7 @@ contract FP is ERC721 {
     Counters.Counter private _tokenCounter;
 
     // 0 is DAT (term deposit)
-    // 1 is Crowdfunding
+    // 1 is Factoring
     // 2 is Mudaraba
     // Not using enum because list may grow (is there a better way ?)
     mapping (uint256 => uint16) private _subscriptionKinds;
