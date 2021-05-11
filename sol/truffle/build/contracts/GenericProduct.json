@@ -1,0 +1,2165 @@
+{
+  "contractName": "GenericProduct",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "isSuscribed",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "idx",
+          "type": "uint256"
+        }
+      ],
+      "name": "getSubscription",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getSubscriptionLength",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.3+commit.8d00100c\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"idx\",\"type\":\"uint256\"}],\"name\":\"getSubscription\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getSubscriptionLength\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"isSuscribed\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"author\":\"AshtonIzmev\",\"details\":\"Generic Banking smart contracts\",\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/home/issam/git/med-erc20/sol/truffle/contracts/token/bank/GenericProduct.sol\":\"GenericProduct\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/home/issam/git/med-erc20/sol/truffle/contracts/token/ERC20/ERC20.sol\":{\"keccak256\":\"0xfeccdcbf67b2006a715e5af1a4c7556004d95b2806552b5cc54e46e8eb7e887b\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://45b1f9043c0fb450272f20ed19ef633fcba1b129d602651a856dfae1a2243a2c\",\"dweb:/ipfs/QmUTSQiDikkcNtTtyDpkEwCM5ztVUUh9c1inBukn6HC5Vr\"]},\"/home/issam/git/med-erc20/sol/truffle/contracts/token/ERC20/IERC20.sol\":{\"keccak256\":\"0xf8e8d118a7a8b2e134181f7da655f6266aa3a0f9134b2605747139fcb0c5d835\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://9ec48567e7ad06acb670980d5cdf3fd7f3949bf12894f02d68c3bb43e75aa84f\",\"dweb:/ipfs/QmaG3R2J9cz92YT77vFjYrjMNU2wHp4ypwYD62HqDUqS5U\"]},\"/home/issam/git/med-erc20/sol/truffle/contracts/token/ERC20/extensions/IERC20Metadata.sol\":{\"keccak256\":\"0x83fe24f5c04a56091e50f4a345ff504c8bff658a76d4c43b16878c8f940c53b2\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://d4c3df1a7ca104b633a7d81c6c6f5192367d150cd5a32cba81f7f27012729013\",\"dweb:/ipfs/QmSim72e3ZVsfgZt8UceCvbiSuMRHR6WDsiamqNzZahGSY\"]},\"/home/issam/git/med-erc20/sol/truffle/contracts/token/ERC721/ERC721.sol\":{\"keccak256\":\"0x2d9f9af8b84d252e0e7ee716e4cb3ad1b58f3ec6619e4f54f40d4b5e28f75eb7\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://43d6abdcb4cd5be9933f526b53f21008e9a7ab75ce134478625cc8ccd3c1a638\",\"dweb:/ipfs/QmZrzWUYmNANRCvHaMGsJQXYnWCe6HvMmvrqaPn1GEcpJ1\"]},\"/home/issam/git/med-erc20/sol/truffle/contracts/token/ERC721/IERC721.sol\":{\"keccak256\":\"0xc1c941ad1e580b4623007305921efe2f26fc7320a4edc226234dd707c658a428\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://473e11d739868e0d9f48254ccf84ba63290d6a2321d59a37b74c244a27f9cad7\",\"dweb:/ipfs/QmUGzDmecP936jzgM7SYyGwR1YgBGsveoHHJTbDfB8jbGF\"]},\"/home/issam/git/med-erc20/sol/truffle/contracts/token/ERC721/IERC721Receiver.sol\":{\"keccak256\":\"0x96877bb2eb8ca360e949ee1bd77b47a14e92e42f79897c350f088f87a3c231d4\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://48593d699a4ef6b5bd2efb20d37320e69303fd27d4b59a2b6b8a8e563e608456\",\"dweb:/ipfs/QmdAPS8uLrzPJEeFZyJVkwTtaL3KB9jo9wJm1UcoJP55wT\"]},\"/home/issam/git/med-erc20/sol/truffle/contracts/token/ERC721/extensions/IERC721Metadata.sol\":{\"keccak256\":\"0xb8d11e77eb1ed34a33720edb551d7d6a6b0eee2bfaa40a7024020e1fdf879b16\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://c583283c838cc624a96a69eaa823fa92ac5294ec88d417e266c09ea091e0ae62\",\"dweb:/ipfs/QmNdzitXaFADaxooWpB4WsckkDyr4j6GQRxBjyKXsvEeXv\"]},\"/home/issam/git/med-erc20/sol/truffle/contracts/token/bank/GenericProduct.sol\":{\"keccak256\":\"0xf9b0d6452d57eb155693c15b561304e758043b59eeb8496a44f354d08f57952f\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://0f18c2941ef329c184f2b6b43a7d5ca5b13403bb22223bcf83bec3c2951a8763\",\"dweb:/ipfs/QmPGCJ5nhKaHC3ELD9jQR52v1Zs6YVCXPyBzx8cPdVVNPs\"]},\"/home/issam/git/med-erc20/sol/truffle/contracts/token/med/MED.sol\":{\"keccak256\":\"0x3e9d1312297027593dd7db1e7464b20d456342447bcc00725dfa960bc56b32db\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://30b20eeaef014ea11a5116cb2cbe7ff15365608d2f596408f48bd104b4206161\",\"dweb:/ipfs/QmYrPrqHjuN7jxdViuGEtJ6jo82AFb3NFSJEdPz2rZ887i\"]},\"/home/issam/git/med-erc20/sol/truffle/contracts/token/nft/FP.sol\":{\"keccak256\":\"0x6c649686996e8b3dfef1fd0811c8159dea51638c87718fd3a5817f174745aca8\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://d398219e7ef482d719162ebc85f8ad9f113233e7fb9f1ccc451a80bc89648ded\",\"dweb:/ipfs/QmUAVjFTdiotPJG3DNxP8M8YsQEBtGLQvRXTEHUxvigBoM\"]},\"/home/issam/git/med-erc20/sol/truffle/contracts/utils/Address.sol\":{\"keccak256\":\"0x069b2631bb5b5193a58ccf7a06266c7361bd2c20095667af4402817605627f45\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://6a4c96fafff76deda5697c3c5c98cade6e6e1b178254544c106bf360c079ce4e\",\"dweb:/ipfs/QmXmxubE3jnatFgZuN8ay1VV6hZ8WRmhvUjNpeVjki15HX\"]},\"/home/issam/git/med-erc20/sol/truffle/contracts/utils/Context.sol\":{\"keccak256\":\"0xf930d2df426bfcfc1f7415be724f04081c96f4fb9ec8d0e3a521c07692dface0\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://fc2bfdea0d2562c76fb3c4cf70a86c6ba25c5a30e8f8515c95aafdf8383f8395\",\"dweb:/ipfs/QmTbFya18786ckJfLYUoWau9jBTKfmWnWm5XSViWvB7PXN\"]},\"/home/issam/git/med-erc20/sol/truffle/contracts/utils/Counters.sol\":{\"keccak256\":\"0x62d306ff0499a11913bc60b5939eec619509b5c67b30e86ebf8b8bda0b7a7fee\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://6712ca27a06062db31465b1470e6207553553a9bb0b4358d918b35bdae5b4ffe\",\"dweb:/ipfs/QmZ92pU9DJ3h1qREMFvDQhArSy6fh6zA983NeLFHRs1qKJ\"]},\"/home/issam/git/med-erc20/sol/truffle/contracts/utils/EnumerableSet.sol\":{\"keccak256\":\"0xd3f231a05686a49cf949c85df6dd3e2a747d20bcfd0d846afc1dd8e5696444e5\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://c66d2ecbee7159a331e2bdec3d6229587f5f05ca4ff50b29401a271e78770162\",\"dweb:/ipfs/QmUVbQyfKfRAoLuoFtd4UuYkdwDzyNR1Yc3nwCwbhGF47C\"]},\"/home/issam/git/med-erc20/sol/truffle/contracts/utils/Strings.sol\":{\"keccak256\":\"0x456e9b3a2bfe189b5249857f624f4139e59331db518483b456c4e587a20552e0\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://1123c9545decc48a011370ebab4bf53dda98524fa21f9498e68851ba8f0ffc0f\",\"dweb:/ipfs/QmUpgMg8EFDnv87ePKUjXxXpJT3qwHRj9VDNSnRxu7T9sy\"]},\"/home/issam/git/med-erc20/sol/truffle/contracts/utils/introspection/ERC165.sol\":{\"keccak256\":\"0x5718c5df9bd67ac68a796961df938821bb5dc0cd4c6118d77e9145afb187409b\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://d10e1d9b26042424789246603906ad06143bf9a928f4e99de8b5e3bdc662f549\",\"dweb:/ipfs/Qmejonoaj5MLekPus229rJQHcC6E9dz2xorjHJR84fMfmn\"]},\"/home/issam/git/med-erc20/sol/truffle/contracts/utils/introspection/IERC165.sol\":{\"keccak256\":\"0xa28007762d9da9db878dd421960c8cb9a10471f47ab5c1b3309bfe48e9e79ff4\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://796ab6e88af7bf0e78def0f059310c903af6a312b565344e0ff524a0f26e81c6\",\"dweb:/ipfs/QmcsVgLgzWdor3UnAztUkXKNGcysm1MPneWksF72AvnwBx\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: MIT\n\npragma solidity ^0.8.0;\n\nimport \"../../utils/Context.sol\";\nimport \"../../utils/EnumerableSet.sol\";\nimport \"../med/MED.sol\";\nimport \"../nft/FP.sol\";\n\n/**\n * @dev Generic Banking smart contracts\n * @author AshtonIzmev\n */\nabstract contract GenericProduct is Context {\n\n    using EnumerableSet for EnumerableSet.UintSet;\n\n    MED internal medToken;\n    FP internal fpToken;\n\n    address internal _issuingBank;\n\n    EnumerableSet.UintSet internal _subscriptionIds;\n\n    modifier onlyIssuingBank() {\n        require(\n            _msgSender() == _issuingBank,\n            \"Only Issuing Bank is allowed to call this\"\n        );\n        _;\n    }\n\n    function isSuscribed(uint256 tokenId) public virtual view returns (bool) {\n        return _subscriptionIds.contains(tokenId);\n    }\n\n    function getSubscription(uint256 idx) public virtual view returns (uint256) {\n        require(idx < _subscriptionIds.length(), \"Idx overflow\");\n        return _subscriptionIds.at(idx);\n    }\n\n    function getSubscriptionLength() public virtual view returns (uint256) {\n        return _subscriptionIds.length();\n    }\n\n}",
+  "sourcePath": "/home/issam/git/med-erc20/sol/truffle/contracts/token/bank/GenericProduct.sol",
+  "ast": {
+    "absolutePath": "/home/issam/git/med-erc20/sol/truffle/contracts/token/bank/GenericProduct.sol",
+    "exportedSymbols": {
+      "Address": [
+        3440
+      ],
+      "Context": [
+        3463
+      ],
+      "Counters": [
+        3524
+      ],
+      "ERC165": [
+        4260
+      ],
+      "ERC20": [
+        564
+      ],
+      "ERC721": [
+        1485
+      ],
+      "EnumerableSet": [
+        4033
+      ],
+      "FP": [
+        3144
+      ],
+      "GenericProduct": [
+        1972
+      ],
+      "IERC165": [
+        4272
+      ],
+      "IERC20": [
+        642
+      ],
+      "IERC20Metadata": [
+        667
+      ],
+      "IERC721": [
+        1601
+      ],
+      "IERC721Metadata": [
+        1646
+      ],
+      "IERC721Receiver": [
+        1619
+      ],
+      "MED": [
+        3007
+      ],
+      "Strings": [
+        4236
+      ]
+    },
+    "id": 1973,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1892,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "33:23:9"
+      },
+      {
+        "absolutePath": "/home/issam/git/med-erc20/sol/truffle/contracts/utils/Context.sol",
+        "file": "../../utils/Context.sol",
+        "id": 1893,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 1973,
+        "sourceUnit": 3464,
+        "src": "58:33:9",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "/home/issam/git/med-erc20/sol/truffle/contracts/utils/EnumerableSet.sol",
+        "file": "../../utils/EnumerableSet.sol",
+        "id": 1894,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 1973,
+        "sourceUnit": 4034,
+        "src": "92:39:9",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "/home/issam/git/med-erc20/sol/truffle/contracts/token/med/MED.sol",
+        "file": "../med/MED.sol",
+        "id": 1895,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 1973,
+        "sourceUnit": 3008,
+        "src": "132:24:9",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "/home/issam/git/med-erc20/sol/truffle/contracts/token/nft/FP.sol",
+        "file": "../nft/FP.sol",
+        "id": 1896,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 1973,
+        "sourceUnit": 3145,
+        "src": "157:23:9",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": true,
+        "baseContracts": [
+          {
+            "baseName": {
+              "id": 1898,
+              "name": "Context",
+              "nodeType": "IdentifierPath",
+              "referencedDeclaration": 3463,
+              "src": "289:7:9"
+            },
+            "id": 1899,
+            "nodeType": "InheritanceSpecifier",
+            "src": "289:7:9"
+          }
+        ],
+        "contractDependencies": [
+          3463
+        ],
+        "contractKind": "contract",
+        "documentation": {
+          "id": 1897,
+          "nodeType": "StructuredDocumentation",
+          "src": "182:70:9",
+          "text": " @dev Generic Banking smart contracts\n @author AshtonIzmev"
+        },
+        "fullyImplemented": true,
+        "id": 1972,
+        "linearizedBaseContracts": [
+          1972,
+          3463
+        ],
+        "name": "GenericProduct",
+        "nameLocation": "271:14:9",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "id": 1903,
+            "libraryName": {
+              "id": 1900,
+              "name": "EnumerableSet",
+              "nodeType": "IdentifierPath",
+              "referencedDeclaration": 4033,
+              "src": "310:13:9"
+            },
+            "nodeType": "UsingForDirective",
+            "src": "304:46:9",
+            "typeName": {
+              "id": 1902,
+              "nodeType": "UserDefinedTypeName",
+              "pathNode": {
+                "id": 1901,
+                "name": "EnumerableSet.UintSet",
+                "nodeType": "IdentifierPath",
+                "referencedDeclaration": 3933,
+                "src": "328:21:9"
+              },
+              "referencedDeclaration": 3933,
+              "src": "328:21:9",
+              "typeDescriptions": {
+                "typeIdentifier": "t_struct$_UintSet_$3933_storage_ptr",
+                "typeString": "struct EnumerableSet.UintSet"
+              }
+            }
+          },
+          {
+            "constant": false,
+            "id": 1906,
+            "mutability": "mutable",
+            "name": "medToken",
+            "nameLocation": "369:8:9",
+            "nodeType": "VariableDeclaration",
+            "scope": 1972,
+            "src": "356:21:9",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_MED_$3007",
+              "typeString": "contract MED"
+            },
+            "typeName": {
+              "id": 1905,
+              "nodeType": "UserDefinedTypeName",
+              "pathNode": {
+                "id": 1904,
+                "name": "MED",
+                "nodeType": "IdentifierPath",
+                "referencedDeclaration": 3007,
+                "src": "356:3:9"
+              },
+              "referencedDeclaration": 3007,
+              "src": "356:3:9",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_MED_$3007",
+                "typeString": "contract MED"
+              }
+            },
+            "visibility": "internal"
+          },
+          {
+            "constant": false,
+            "id": 1909,
+            "mutability": "mutable",
+            "name": "fpToken",
+            "nameLocation": "395:7:9",
+            "nodeType": "VariableDeclaration",
+            "scope": 1972,
+            "src": "383:19:9",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_FP_$3144",
+              "typeString": "contract FP"
+            },
+            "typeName": {
+              "id": 1908,
+              "nodeType": "UserDefinedTypeName",
+              "pathNode": {
+                "id": 1907,
+                "name": "FP",
+                "nodeType": "IdentifierPath",
+                "referencedDeclaration": 3144,
+                "src": "383:2:9"
+              },
+              "referencedDeclaration": 3144,
+              "src": "383:2:9",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_FP_$3144",
+                "typeString": "contract FP"
+              }
+            },
+            "visibility": "internal"
+          },
+          {
+            "constant": false,
+            "id": 1911,
+            "mutability": "mutable",
+            "name": "_issuingBank",
+            "nameLocation": "426:12:9",
+            "nodeType": "VariableDeclaration",
+            "scope": 1972,
+            "src": "409:29:9",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_address",
+              "typeString": "address"
+            },
+            "typeName": {
+              "id": 1910,
+              "name": "address",
+              "nodeType": "ElementaryTypeName",
+              "src": "409:7:9",
+              "stateMutability": "nonpayable",
+              "typeDescriptions": {
+                "typeIdentifier": "t_address",
+                "typeString": "address"
+              }
+            },
+            "visibility": "internal"
+          },
+          {
+            "constant": false,
+            "id": 1914,
+            "mutability": "mutable",
+            "name": "_subscriptionIds",
+            "nameLocation": "476:16:9",
+            "nodeType": "VariableDeclaration",
+            "scope": 1972,
+            "src": "445:47:9",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_struct$_UintSet_$3933_storage",
+              "typeString": "struct EnumerableSet.UintSet"
+            },
+            "typeName": {
+              "id": 1913,
+              "nodeType": "UserDefinedTypeName",
+              "pathNode": {
+                "id": 1912,
+                "name": "EnumerableSet.UintSet",
+                "nodeType": "IdentifierPath",
+                "referencedDeclaration": 3933,
+                "src": "445:21:9"
+              },
+              "referencedDeclaration": 3933,
+              "src": "445:21:9",
+              "typeDescriptions": {
+                "typeIdentifier": "t_struct$_UintSet_$3933_storage_ptr",
+                "typeString": "struct EnumerableSet.UintSet"
+              }
+            },
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 1925,
+              "nodeType": "Block",
+              "src": "526:144:9",
+              "statements": [
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "commonType": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        },
+                        "id": 1920,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "arguments": [],
+                          "expression": {
+                            "argumentTypes": [],
+                            "id": 1917,
+                            "name": "_msgSender",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 3451,
+                            "src": "557:10:9",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_function_internal_view$__$returns$_t_address_$",
+                              "typeString": "function () view returns (address)"
+                            }
+                          },
+                          "id": 1918,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "functionCall",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "557:12:9",
+                          "tryCall": false,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": "==",
+                        "rightExpression": {
+                          "id": 1919,
+                          "name": "_issuingBank",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1911,
+                          "src": "573:12:9",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "src": "557:28:9",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "hexValue": "4f6e6c792049737375696e672042616e6b20697320616c6c6f77656420746f2063616c6c2074686973",
+                        "id": 1921,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "599:43:9",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_c9e03399f547206b6b7258b05450b796e55d8bcb8db154b7e57e50c498a31ccb",
+                          "typeString": "literal_string \"Only Issuing Bank is allowed to call this\""
+                        },
+                        "value": "Only Issuing Bank is allowed to call this"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_stringliteral_c9e03399f547206b6b7258b05450b796e55d8bcb8db154b7e57e50c498a31ccb",
+                          "typeString": "literal_string \"Only Issuing Bank is allowed to call this\""
+                        }
+                      ],
+                      "id": 1916,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        4294967278,
+                        4294967278
+                      ],
+                      "referencedDeclaration": 4294967278,
+                      "src": "536:7:9",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                        "typeString": "function (bool,string memory) pure"
+                      }
+                    },
+                    "id": 1922,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "536:116:9",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 1923,
+                  "nodeType": "ExpressionStatement",
+                  "src": "536:116:9"
+                },
+                {
+                  "id": 1924,
+                  "nodeType": "PlaceholderStatement",
+                  "src": "662:1:9"
+                }
+              ]
+            },
+            "id": 1926,
+            "name": "onlyIssuingBank",
+            "nameLocation": "508:15:9",
+            "nodeType": "ModifierDefinition",
+            "parameters": {
+              "id": 1915,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "523:2:9"
+            },
+            "src": "499:171:9",
+            "virtual": false,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 1938,
+              "nodeType": "Block",
+              "src": "749:58:9",
+              "statements": [
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "id": 1935,
+                        "name": "tokenId",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1928,
+                        "src": "792:7:9",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      ],
+                      "expression": {
+                        "id": 1933,
+                        "name": "_subscriptionIds",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1914,
+                        "src": "766:16:9",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_UintSet_$3933_storage",
+                          "typeString": "struct EnumerableSet.UintSet storage ref"
+                        }
+                      },
+                      "id": 1934,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "contains",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 3996,
+                      "src": "766:25:9",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_view$_t_struct$_UintSet_$3933_storage_ptr_$_t_uint256_$returns$_t_bool_$bound_to$_t_struct$_UintSet_$3933_storage_ptr_$",
+                        "typeString": "function (struct EnumerableSet.UintSet storage pointer,uint256) view returns (bool)"
+                      }
+                    },
+                    "id": 1936,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "766:34:9",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "functionReturnParameters": 1932,
+                  "id": 1937,
+                  "nodeType": "Return",
+                  "src": "759:41:9"
+                }
+              ]
+            },
+            "functionSelector": "839db9c0",
+            "id": 1939,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "isSuscribed",
+            "nameLocation": "685:11:9",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1929,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1928,
+                  "mutability": "mutable",
+                  "name": "tokenId",
+                  "nameLocation": "705:7:9",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1939,
+                  "src": "697:15:9",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1927,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "697:7:9",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "696:17:9"
+            },
+            "returnParameters": {
+              "id": 1932,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1931,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1939,
+                  "src": "743:4:9",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 1930,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "743:4:9",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "742:6:9"
+            },
+            "scope": 1972,
+            "src": "676:131:9",
+            "stateMutability": "view",
+            "virtual": true,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 1960,
+              "nodeType": "Block",
+              "src": "889:114:9",
+              "statements": [
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "commonType": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        },
+                        "id": 1951,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "id": 1947,
+                          "name": "idx",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1941,
+                          "src": "907:3:9",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": "<",
+                        "rightExpression": {
+                          "arguments": [],
+                          "expression": {
+                            "argumentTypes": [],
+                            "expression": {
+                              "id": 1948,
+                              "name": "_subscriptionIds",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 1914,
+                              "src": "913:16:9",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_struct$_UintSet_$3933_storage",
+                                "typeString": "struct EnumerableSet.UintSet storage ref"
+                              }
+                            },
+                            "id": 1949,
+                            "isConstant": false,
+                            "isLValue": true,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "memberName": "length",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": 4011,
+                            "src": "913:23:9",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_function_internal_view$_t_struct$_UintSet_$3933_storage_ptr_$returns$_t_uint256_$bound_to$_t_struct$_UintSet_$3933_storage_ptr_$",
+                              "typeString": "function (struct EnumerableSet.UintSet storage pointer) view returns (uint256)"
+                            }
+                          },
+                          "id": 1950,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "functionCall",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "913:25:9",
+                          "tryCall": false,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "src": "907:31:9",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "hexValue": "496478206f766572666c6f77",
+                        "id": 1952,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "940:14:9",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_0ba76f4c746deb11e791d4a026ba6df02f1547cb9dabaa75f7114aae3c4f19b8",
+                          "typeString": "literal_string \"Idx overflow\""
+                        },
+                        "value": "Idx overflow"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_stringliteral_0ba76f4c746deb11e791d4a026ba6df02f1547cb9dabaa75f7114aae3c4f19b8",
+                          "typeString": "literal_string \"Idx overflow\""
+                        }
+                      ],
+                      "id": 1946,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        4294967278,
+                        4294967278
+                      ],
+                      "referencedDeclaration": 4294967278,
+                      "src": "899:7:9",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                        "typeString": "function (bool,string memory) pure"
+                      }
+                    },
+                    "id": 1953,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "899:56:9",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 1954,
+                  "nodeType": "ExpressionStatement",
+                  "src": "899:56:9"
+                },
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "id": 1957,
+                        "name": "idx",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1941,
+                        "src": "992:3:9",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      ],
+                      "expression": {
+                        "id": 1955,
+                        "name": "_subscriptionIds",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1914,
+                        "src": "972:16:9",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_UintSet_$3933_storage",
+                          "typeString": "struct EnumerableSet.UintSet storage ref"
+                        }
+                      },
+                      "id": 1956,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "at",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 4032,
+                      "src": "972:19:9",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_view$_t_struct$_UintSet_$3933_storage_ptr_$_t_uint256_$returns$_t_uint256_$bound_to$_t_struct$_UintSet_$3933_storage_ptr_$",
+                        "typeString": "function (struct EnumerableSet.UintSet storage pointer,uint256) view returns (uint256)"
+                      }
+                    },
+                    "id": 1958,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "972:24:9",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "functionReturnParameters": 1945,
+                  "id": 1959,
+                  "nodeType": "Return",
+                  "src": "965:31:9"
+                }
+              ]
+            },
+            "functionSelector": "dc311dd3",
+            "id": 1961,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getSubscription",
+            "nameLocation": "822:15:9",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1942,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1941,
+                  "mutability": "mutable",
+                  "name": "idx",
+                  "nameLocation": "846:3:9",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1961,
+                  "src": "838:11:9",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1940,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "838:7:9",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "837:13:9"
+            },
+            "returnParameters": {
+              "id": 1945,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1944,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1961,
+                  "src": "880:7:9",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1943,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "880:7:9",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "879:9:9"
+            },
+            "scope": 1972,
+            "src": "813:190:9",
+            "stateMutability": "view",
+            "virtual": true,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 1970,
+              "nodeType": "Block",
+              "src": "1080:49:9",
+              "statements": [
+                {
+                  "expression": {
+                    "arguments": [],
+                    "expression": {
+                      "argumentTypes": [],
+                      "expression": {
+                        "id": 1966,
+                        "name": "_subscriptionIds",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1914,
+                        "src": "1097:16:9",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_UintSet_$3933_storage",
+                          "typeString": "struct EnumerableSet.UintSet storage ref"
+                        }
+                      },
+                      "id": 1967,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "length",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 4011,
+                      "src": "1097:23:9",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_view$_t_struct$_UintSet_$3933_storage_ptr_$returns$_t_uint256_$bound_to$_t_struct$_UintSet_$3933_storage_ptr_$",
+                        "typeString": "function (struct EnumerableSet.UintSet storage pointer) view returns (uint256)"
+                      }
+                    },
+                    "id": 1968,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1097:25:9",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "functionReturnParameters": 1965,
+                  "id": 1969,
+                  "nodeType": "Return",
+                  "src": "1090:32:9"
+                }
+              ]
+            },
+            "functionSelector": "2530ea71",
+            "id": 1971,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getSubscriptionLength",
+            "nameLocation": "1018:21:9",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1962,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1039:2:9"
+            },
+            "returnParameters": {
+              "id": 1965,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1964,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1971,
+                  "src": "1071:7:9",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1963,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1071:7:9",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1070:9:9"
+            },
+            "scope": 1972,
+            "src": "1009:120:9",
+            "stateMutability": "view",
+            "virtual": true,
+            "visibility": "public"
+          }
+        ],
+        "scope": 1973,
+        "src": "253:879:9"
+      }
+    ],
+    "src": "33:1099:9"
+  },
+  "legacyAST": {
+    "absolutePath": "/home/issam/git/med-erc20/sol/truffle/contracts/token/bank/GenericProduct.sol",
+    "exportedSymbols": {
+      "Address": [
+        3440
+      ],
+      "Context": [
+        3463
+      ],
+      "Counters": [
+        3524
+      ],
+      "ERC165": [
+        4260
+      ],
+      "ERC20": [
+        564
+      ],
+      "ERC721": [
+        1485
+      ],
+      "EnumerableSet": [
+        4033
+      ],
+      "FP": [
+        3144
+      ],
+      "GenericProduct": [
+        1972
+      ],
+      "IERC165": [
+        4272
+      ],
+      "IERC20": [
+        642
+      ],
+      "IERC20Metadata": [
+        667
+      ],
+      "IERC721": [
+        1601
+      ],
+      "IERC721Metadata": [
+        1646
+      ],
+      "IERC721Receiver": [
+        1619
+      ],
+      "MED": [
+        3007
+      ],
+      "Strings": [
+        4236
+      ]
+    },
+    "id": 1973,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1892,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "33:23:9"
+      },
+      {
+        "absolutePath": "/home/issam/git/med-erc20/sol/truffle/contracts/utils/Context.sol",
+        "file": "../../utils/Context.sol",
+        "id": 1893,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 1973,
+        "sourceUnit": 3464,
+        "src": "58:33:9",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "/home/issam/git/med-erc20/sol/truffle/contracts/utils/EnumerableSet.sol",
+        "file": "../../utils/EnumerableSet.sol",
+        "id": 1894,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 1973,
+        "sourceUnit": 4034,
+        "src": "92:39:9",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "/home/issam/git/med-erc20/sol/truffle/contracts/token/med/MED.sol",
+        "file": "../med/MED.sol",
+        "id": 1895,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 1973,
+        "sourceUnit": 3008,
+        "src": "132:24:9",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "/home/issam/git/med-erc20/sol/truffle/contracts/token/nft/FP.sol",
+        "file": "../nft/FP.sol",
+        "id": 1896,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 1973,
+        "sourceUnit": 3145,
+        "src": "157:23:9",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": true,
+        "baseContracts": [
+          {
+            "baseName": {
+              "id": 1898,
+              "name": "Context",
+              "nodeType": "IdentifierPath",
+              "referencedDeclaration": 3463,
+              "src": "289:7:9"
+            },
+            "id": 1899,
+            "nodeType": "InheritanceSpecifier",
+            "src": "289:7:9"
+          }
+        ],
+        "contractDependencies": [
+          3463
+        ],
+        "contractKind": "contract",
+        "documentation": {
+          "id": 1897,
+          "nodeType": "StructuredDocumentation",
+          "src": "182:70:9",
+          "text": " @dev Generic Banking smart contracts\n @author AshtonIzmev"
+        },
+        "fullyImplemented": true,
+        "id": 1972,
+        "linearizedBaseContracts": [
+          1972,
+          3463
+        ],
+        "name": "GenericProduct",
+        "nameLocation": "271:14:9",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "id": 1903,
+            "libraryName": {
+              "id": 1900,
+              "name": "EnumerableSet",
+              "nodeType": "IdentifierPath",
+              "referencedDeclaration": 4033,
+              "src": "310:13:9"
+            },
+            "nodeType": "UsingForDirective",
+            "src": "304:46:9",
+            "typeName": {
+              "id": 1902,
+              "nodeType": "UserDefinedTypeName",
+              "pathNode": {
+                "id": 1901,
+                "name": "EnumerableSet.UintSet",
+                "nodeType": "IdentifierPath",
+                "referencedDeclaration": 3933,
+                "src": "328:21:9"
+              },
+              "referencedDeclaration": 3933,
+              "src": "328:21:9",
+              "typeDescriptions": {
+                "typeIdentifier": "t_struct$_UintSet_$3933_storage_ptr",
+                "typeString": "struct EnumerableSet.UintSet"
+              }
+            }
+          },
+          {
+            "constant": false,
+            "id": 1906,
+            "mutability": "mutable",
+            "name": "medToken",
+            "nameLocation": "369:8:9",
+            "nodeType": "VariableDeclaration",
+            "scope": 1972,
+            "src": "356:21:9",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_MED_$3007",
+              "typeString": "contract MED"
+            },
+            "typeName": {
+              "id": 1905,
+              "nodeType": "UserDefinedTypeName",
+              "pathNode": {
+                "id": 1904,
+                "name": "MED",
+                "nodeType": "IdentifierPath",
+                "referencedDeclaration": 3007,
+                "src": "356:3:9"
+              },
+              "referencedDeclaration": 3007,
+              "src": "356:3:9",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_MED_$3007",
+                "typeString": "contract MED"
+              }
+            },
+            "visibility": "internal"
+          },
+          {
+            "constant": false,
+            "id": 1909,
+            "mutability": "mutable",
+            "name": "fpToken",
+            "nameLocation": "395:7:9",
+            "nodeType": "VariableDeclaration",
+            "scope": 1972,
+            "src": "383:19:9",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_FP_$3144",
+              "typeString": "contract FP"
+            },
+            "typeName": {
+              "id": 1908,
+              "nodeType": "UserDefinedTypeName",
+              "pathNode": {
+                "id": 1907,
+                "name": "FP",
+                "nodeType": "IdentifierPath",
+                "referencedDeclaration": 3144,
+                "src": "383:2:9"
+              },
+              "referencedDeclaration": 3144,
+              "src": "383:2:9",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_FP_$3144",
+                "typeString": "contract FP"
+              }
+            },
+            "visibility": "internal"
+          },
+          {
+            "constant": false,
+            "id": 1911,
+            "mutability": "mutable",
+            "name": "_issuingBank",
+            "nameLocation": "426:12:9",
+            "nodeType": "VariableDeclaration",
+            "scope": 1972,
+            "src": "409:29:9",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_address",
+              "typeString": "address"
+            },
+            "typeName": {
+              "id": 1910,
+              "name": "address",
+              "nodeType": "ElementaryTypeName",
+              "src": "409:7:9",
+              "stateMutability": "nonpayable",
+              "typeDescriptions": {
+                "typeIdentifier": "t_address",
+                "typeString": "address"
+              }
+            },
+            "visibility": "internal"
+          },
+          {
+            "constant": false,
+            "id": 1914,
+            "mutability": "mutable",
+            "name": "_subscriptionIds",
+            "nameLocation": "476:16:9",
+            "nodeType": "VariableDeclaration",
+            "scope": 1972,
+            "src": "445:47:9",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_struct$_UintSet_$3933_storage",
+              "typeString": "struct EnumerableSet.UintSet"
+            },
+            "typeName": {
+              "id": 1913,
+              "nodeType": "UserDefinedTypeName",
+              "pathNode": {
+                "id": 1912,
+                "name": "EnumerableSet.UintSet",
+                "nodeType": "IdentifierPath",
+                "referencedDeclaration": 3933,
+                "src": "445:21:9"
+              },
+              "referencedDeclaration": 3933,
+              "src": "445:21:9",
+              "typeDescriptions": {
+                "typeIdentifier": "t_struct$_UintSet_$3933_storage_ptr",
+                "typeString": "struct EnumerableSet.UintSet"
+              }
+            },
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 1925,
+              "nodeType": "Block",
+              "src": "526:144:9",
+              "statements": [
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "commonType": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        },
+                        "id": 1920,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "arguments": [],
+                          "expression": {
+                            "argumentTypes": [],
+                            "id": 1917,
+                            "name": "_msgSender",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 3451,
+                            "src": "557:10:9",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_function_internal_view$__$returns$_t_address_$",
+                              "typeString": "function () view returns (address)"
+                            }
+                          },
+                          "id": 1918,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "functionCall",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "557:12:9",
+                          "tryCall": false,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": "==",
+                        "rightExpression": {
+                          "id": 1919,
+                          "name": "_issuingBank",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1911,
+                          "src": "573:12:9",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "src": "557:28:9",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "hexValue": "4f6e6c792049737375696e672042616e6b20697320616c6c6f77656420746f2063616c6c2074686973",
+                        "id": 1921,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "599:43:9",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_c9e03399f547206b6b7258b05450b796e55d8bcb8db154b7e57e50c498a31ccb",
+                          "typeString": "literal_string \"Only Issuing Bank is allowed to call this\""
+                        },
+                        "value": "Only Issuing Bank is allowed to call this"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_stringliteral_c9e03399f547206b6b7258b05450b796e55d8bcb8db154b7e57e50c498a31ccb",
+                          "typeString": "literal_string \"Only Issuing Bank is allowed to call this\""
+                        }
+                      ],
+                      "id": 1916,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        4294967278,
+                        4294967278
+                      ],
+                      "referencedDeclaration": 4294967278,
+                      "src": "536:7:9",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                        "typeString": "function (bool,string memory) pure"
+                      }
+                    },
+                    "id": 1922,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "536:116:9",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 1923,
+                  "nodeType": "ExpressionStatement",
+                  "src": "536:116:9"
+                },
+                {
+                  "id": 1924,
+                  "nodeType": "PlaceholderStatement",
+                  "src": "662:1:9"
+                }
+              ]
+            },
+            "id": 1926,
+            "name": "onlyIssuingBank",
+            "nameLocation": "508:15:9",
+            "nodeType": "ModifierDefinition",
+            "parameters": {
+              "id": 1915,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "523:2:9"
+            },
+            "src": "499:171:9",
+            "virtual": false,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 1938,
+              "nodeType": "Block",
+              "src": "749:58:9",
+              "statements": [
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "id": 1935,
+                        "name": "tokenId",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1928,
+                        "src": "792:7:9",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      ],
+                      "expression": {
+                        "id": 1933,
+                        "name": "_subscriptionIds",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1914,
+                        "src": "766:16:9",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_UintSet_$3933_storage",
+                          "typeString": "struct EnumerableSet.UintSet storage ref"
+                        }
+                      },
+                      "id": 1934,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "contains",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 3996,
+                      "src": "766:25:9",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_view$_t_struct$_UintSet_$3933_storage_ptr_$_t_uint256_$returns$_t_bool_$bound_to$_t_struct$_UintSet_$3933_storage_ptr_$",
+                        "typeString": "function (struct EnumerableSet.UintSet storage pointer,uint256) view returns (bool)"
+                      }
+                    },
+                    "id": 1936,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "766:34:9",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "functionReturnParameters": 1932,
+                  "id": 1937,
+                  "nodeType": "Return",
+                  "src": "759:41:9"
+                }
+              ]
+            },
+            "functionSelector": "839db9c0",
+            "id": 1939,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "isSuscribed",
+            "nameLocation": "685:11:9",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1929,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1928,
+                  "mutability": "mutable",
+                  "name": "tokenId",
+                  "nameLocation": "705:7:9",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1939,
+                  "src": "697:15:9",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1927,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "697:7:9",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "696:17:9"
+            },
+            "returnParameters": {
+              "id": 1932,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1931,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1939,
+                  "src": "743:4:9",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 1930,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "743:4:9",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "742:6:9"
+            },
+            "scope": 1972,
+            "src": "676:131:9",
+            "stateMutability": "view",
+            "virtual": true,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 1960,
+              "nodeType": "Block",
+              "src": "889:114:9",
+              "statements": [
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "commonType": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        },
+                        "id": 1951,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "id": 1947,
+                          "name": "idx",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1941,
+                          "src": "907:3:9",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": "<",
+                        "rightExpression": {
+                          "arguments": [],
+                          "expression": {
+                            "argumentTypes": [],
+                            "expression": {
+                              "id": 1948,
+                              "name": "_subscriptionIds",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 1914,
+                              "src": "913:16:9",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_struct$_UintSet_$3933_storage",
+                                "typeString": "struct EnumerableSet.UintSet storage ref"
+                              }
+                            },
+                            "id": 1949,
+                            "isConstant": false,
+                            "isLValue": true,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "memberName": "length",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": 4011,
+                            "src": "913:23:9",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_function_internal_view$_t_struct$_UintSet_$3933_storage_ptr_$returns$_t_uint256_$bound_to$_t_struct$_UintSet_$3933_storage_ptr_$",
+                              "typeString": "function (struct EnumerableSet.UintSet storage pointer) view returns (uint256)"
+                            }
+                          },
+                          "id": 1950,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "functionCall",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "913:25:9",
+                          "tryCall": false,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "src": "907:31:9",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "hexValue": "496478206f766572666c6f77",
+                        "id": 1952,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "940:14:9",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_0ba76f4c746deb11e791d4a026ba6df02f1547cb9dabaa75f7114aae3c4f19b8",
+                          "typeString": "literal_string \"Idx overflow\""
+                        },
+                        "value": "Idx overflow"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_stringliteral_0ba76f4c746deb11e791d4a026ba6df02f1547cb9dabaa75f7114aae3c4f19b8",
+                          "typeString": "literal_string \"Idx overflow\""
+                        }
+                      ],
+                      "id": 1946,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        4294967278,
+                        4294967278
+                      ],
+                      "referencedDeclaration": 4294967278,
+                      "src": "899:7:9",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                        "typeString": "function (bool,string memory) pure"
+                      }
+                    },
+                    "id": 1953,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "899:56:9",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 1954,
+                  "nodeType": "ExpressionStatement",
+                  "src": "899:56:9"
+                },
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "id": 1957,
+                        "name": "idx",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1941,
+                        "src": "992:3:9",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      ],
+                      "expression": {
+                        "id": 1955,
+                        "name": "_subscriptionIds",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1914,
+                        "src": "972:16:9",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_UintSet_$3933_storage",
+                          "typeString": "struct EnumerableSet.UintSet storage ref"
+                        }
+                      },
+                      "id": 1956,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "at",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 4032,
+                      "src": "972:19:9",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_view$_t_struct$_UintSet_$3933_storage_ptr_$_t_uint256_$returns$_t_uint256_$bound_to$_t_struct$_UintSet_$3933_storage_ptr_$",
+                        "typeString": "function (struct EnumerableSet.UintSet storage pointer,uint256) view returns (uint256)"
+                      }
+                    },
+                    "id": 1958,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "972:24:9",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "functionReturnParameters": 1945,
+                  "id": 1959,
+                  "nodeType": "Return",
+                  "src": "965:31:9"
+                }
+              ]
+            },
+            "functionSelector": "dc311dd3",
+            "id": 1961,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getSubscription",
+            "nameLocation": "822:15:9",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1942,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1941,
+                  "mutability": "mutable",
+                  "name": "idx",
+                  "nameLocation": "846:3:9",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1961,
+                  "src": "838:11:9",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1940,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "838:7:9",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "837:13:9"
+            },
+            "returnParameters": {
+              "id": 1945,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1944,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1961,
+                  "src": "880:7:9",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1943,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "880:7:9",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "879:9:9"
+            },
+            "scope": 1972,
+            "src": "813:190:9",
+            "stateMutability": "view",
+            "virtual": true,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 1970,
+              "nodeType": "Block",
+              "src": "1080:49:9",
+              "statements": [
+                {
+                  "expression": {
+                    "arguments": [],
+                    "expression": {
+                      "argumentTypes": [],
+                      "expression": {
+                        "id": 1966,
+                        "name": "_subscriptionIds",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1914,
+                        "src": "1097:16:9",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_UintSet_$3933_storage",
+                          "typeString": "struct EnumerableSet.UintSet storage ref"
+                        }
+                      },
+                      "id": 1967,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "length",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 4011,
+                      "src": "1097:23:9",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_view$_t_struct$_UintSet_$3933_storage_ptr_$returns$_t_uint256_$bound_to$_t_struct$_UintSet_$3933_storage_ptr_$",
+                        "typeString": "function (struct EnumerableSet.UintSet storage pointer) view returns (uint256)"
+                      }
+                    },
+                    "id": 1968,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1097:25:9",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "functionReturnParameters": 1965,
+                  "id": 1969,
+                  "nodeType": "Return",
+                  "src": "1090:32:9"
+                }
+              ]
+            },
+            "functionSelector": "2530ea71",
+            "id": 1971,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getSubscriptionLength",
+            "nameLocation": "1018:21:9",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1962,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1039:2:9"
+            },
+            "returnParameters": {
+              "id": 1965,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1964,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1971,
+                  "src": "1071:7:9",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1963,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1071:7:9",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1070:9:9"
+            },
+            "scope": 1972,
+            "src": "1009:120:9",
+            "stateMutability": "view",
+            "virtual": true,
+            "visibility": "public"
+          }
+        ],
+        "scope": 1973,
+        "src": "253:879:9"
+      }
+    ],
+    "src": "33:1099:9"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.3+commit.8d00100c.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.2.4",
+  "updatedAt": "2021-05-11T07:49:17.425Z",
+  "devdoc": {
+    "author": "AshtonIzmev",
+    "details": "Generic Banking smart contracts",
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}

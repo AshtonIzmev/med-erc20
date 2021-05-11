@@ -299,7 +299,7 @@
     "absolutePath": "/home/issam/git/med-erc20/sol/truffle/contracts/token/ERC721/IERC721.sol",
     "exportedSymbols": {
       "IERC165": [
-        3044
+        4272
       ],
       "IERC721": [
         1601
@@ -327,7 +327,7 @@
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
         "scope": 1602,
-        "sourceUnit": 3045,
+        "sourceUnit": 4273,
         "src": "58:47:5",
         "symbolAliases": [],
         "unitAlias": ""
@@ -340,7 +340,7 @@
               "id": 1490,
               "name": "IERC165",
               "nodeType": "IdentifierPath",
-              "referencedDeclaration": 3044,
+              "referencedDeclaration": 4272,
               "src": "196:7:5"
             },
             "id": 1491,
@@ -349,7 +349,7 @@
           }
         ],
         "contractDependencies": [
-          3044
+          4272
         ],
         "contractKind": "interface",
         "documentation": {
@@ -362,7 +362,7 @@
         "id": 1601,
         "linearizedBaseContracts": [
           1601,
-          3044
+          4272
         ],
         "name": "IERC721",
         "nameLocation": "185:7:5",
@@ -1644,7 +1644,7 @@
     "absolutePath": "/home/issam/git/med-erc20/sol/truffle/contracts/token/ERC721/IERC721.sol",
     "exportedSymbols": {
       "IERC165": [
-        3044
+        4272
       ],
       "IERC721": [
         1601
@@ -1672,7 +1672,7 @@
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
         "scope": 1602,
-        "sourceUnit": 3045,
+        "sourceUnit": 4273,
         "src": "58:47:5",
         "symbolAliases": [],
         "unitAlias": ""
@@ -1685,7 +1685,7 @@
               "id": 1490,
               "name": "IERC165",
               "nodeType": "IdentifierPath",
-              "referencedDeclaration": 3044,
+              "referencedDeclaration": 4272,
               "src": "196:7:5"
             },
             "id": 1491,
@@ -1694,7 +1694,7 @@
           }
         ],
         "contractDependencies": [
-          3044
+          4272
         ],
         "contractKind": "interface",
         "documentation": {
@@ -1707,7 +1707,7 @@
         "id": 1601,
         "linearizedBaseContracts": [
           1601,
-          3044
+          4272
         ],
         "name": "IERC721",
         "nameLocation": "185:7:5",
@@ -2991,7 +2991,7 @@
   },
   "networks": {},
   "schemaVersion": "3.2.4",
-  "updatedAt": "2021-04-25T12:07:06.067Z",
+  "updatedAt": "2021-05-11T07:49:17.377Z",
   "devdoc": {
     "details": "Required interface of an ERC721 compliant contract.",
     "events": {
