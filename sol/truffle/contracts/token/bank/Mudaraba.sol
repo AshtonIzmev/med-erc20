@@ -45,7 +45,7 @@ contract Mudaraba is GenericProduct {
      * Subscribe a new Moudaraba product
      */
     function subscribe(uint256 depositAmount) public virtual {
-        require(depositAmount > 0, "Deposit amount must be positive");
+        require(totalCapital + depositAmount < capitalCap, "Capital cap exceeded");
         require(medToken.allowance(_msgSender(), address(this)) >= depositAmount, "Prepare an allowance with the correct amount in order to subscribe");
         medToken.transferFrom(_msgSender(), address(this), depositAmount);
         fpToken.create(_msgSender(), 2);
@@ -73,26 +73,32 @@ contract Mudaraba is GenericProduct {
 
     function distributeProfit(uint256 profitAmount) public virtual onlyIssuingBank {
         // Can exceed capital cap
+        uint256 totalCapitalTmp = totalCapital;
         for (uint idx=0; idx < getSubscriptionLength(); idx++) {
             uint256 tokenId = getSubscription(idx);
             Product memory prod = _subscriptions[tokenId];
-            uint256 depositAmount = (profitAmount * prod._subscriptionAmount) / totalCapital;
+            uint256 depositAmount = (profitAmount * prod._subscriptionAmount) / totalCapitalTmp;
             _addFund(tokenId, depositAmount);
         }
-        totalCapital = totalCapital + profitAmount;
         emit Profit(profitAmount);
     }
 
     function takeLoss(uint256 lossAmount) public virtual onlyIssuingBank {
         require(totalCapital >= lossAmount, "Capital cap exceeded");
+        uint256 totalCapitalTmp = totalCapital;
         for (uint idx=0; idx < getSubscriptionLength(); idx++) {
             uint256 tokenId = getSubscription(idx);
             Product memory prod = _subscriptions[tokenId];
-            uint256 withdrawnAmount = (lossAmount * prod._subscriptionAmount) / totalCapital;
+            uint256 withdrawnAmount = (lossAmount * prod._subscriptionAmount) / totalCapitalTmp;
             _withdrawFund(tokenId, withdrawnAmount);
         }
-        totalCapital = totalCapital - lossAmount;
         emit Loss(lossAmount);
+    }
+
+    function getProduct(uint256 tokenId) public view virtual returns (uint256, uint256) {
+        return (
+            _subscriptions[tokenId]._subscriptionDate,
+            _subscriptions[tokenId]._subscriptionAmount);
     }
 
     /* ********************************************************* */
@@ -112,7 +118,7 @@ contract Mudaraba is GenericProduct {
         require(isSuscribed(tokenId), "Existing Mudaraba subscription");
         Product memory prod = _subscriptions[tokenId];
         require(prod._subscriptionAmount >= withdrawnAmount, "Withdrawn amount must be less than total product");
-        medToken.transferFrom(address(this), _msgSender(), withdrawnAmount);
+        medToken.transfer(_msgSender(), withdrawnAmount);
         _subscriptions[tokenId] = Product(medToken.daysElapsed(), prod._subscriptionAmount - withdrawnAmount);
         if (prod._subscriptionAmount == withdrawnAmount) {
             fpToken.destroy(tokenId);

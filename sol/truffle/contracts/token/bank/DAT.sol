@@ -42,7 +42,7 @@ contract DAT is GenericProduct {
     /**
      * Subscribe a new term deposit
      */
-    function subscribeDat(uint256 depositAmount) public virtual {
+    function subscribe(uint256 depositAmount) public virtual {
         require(depositAmount >= minimumAmount, "Deposit amount is less than minimum required");
         require(medToken.allowance(_msgSender(), address(this)) >= depositAmount, "Prepare an allowance with the correct amount in order to subscribe");
         medToken.transferFrom(_msgSender(), address(this), depositAmount);
@@ -73,6 +73,12 @@ contract DAT is GenericProduct {
         medToken.transfer(fpToken.ownerOf(tokenId), initialAmount * (100+interestRate) / 100);
         fpToken.destroy(tokenId);
         _subscriptionIds.remove(tokenId);        
+    }
+
+    function getProduct(uint256 tokenId) public view virtual returns (uint256, uint256) {
+        return (
+            _subscriptions[tokenId]._subscriptionDate,
+            _subscriptions[tokenId]._subscriptionAmount);
     }
 
 }

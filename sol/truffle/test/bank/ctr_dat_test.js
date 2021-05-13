@@ -50,7 +50,7 @@ contract('DAT', async (accounts) => {
     await tmpMedCtr.updateAccount(citizen1, {from: citizen1});
     await tmpMedCtr.approve(tmpDatCtr.address, 1002, {from: citizen1});
     await tmpFpCtr.setApprovalForAll(tmpDatCtr.address, true, {from: issuingBank});
-    await tryCatch(tmpDatCtr.subscribeDat(999, {from: citizen1}), errTypes.revert);
+    await tryCatch(tmpDatCtr.subscribe(999, {from: citizen1}), errTypes.revert);
   });
 
   it("Suscribe DAT fails because ... no allowance", async() => {
@@ -61,7 +61,7 @@ contract('DAT', async (accounts) => {
     await tmpMedCtr.incrementMonth({from: centralBankAcc});
     await tmpMedCtr.updateAccount(citizen1, {from: citizen1});
     await tmpFpCtr.setApprovalForAll(tmpDatCtr.address, true, {from: issuingBank});
-    await tryCatch(tmpDatCtr.subscribeDat(1001, {from: citizen1}), errTypes.revert);
+    await tryCatch(tmpDatCtr.subscribe(1001, {from: citizen1}), errTypes.revert);
   });
 
   it("Suscribe DAT fails because ... insufficient allowance", async() => {
@@ -73,7 +73,7 @@ contract('DAT', async (accounts) => {
     await tmpMedCtr.updateAccount(citizen1, {from: citizen1});
     await tmpMedCtr.approve(tmpDatCtr.address, 999, {from: citizen1});
     await tmpFpCtr.setApprovalForAll(tmpDatCtr.address, true, {from: issuingBank});
-    await tryCatch(tmpDatCtr.subscribeDat(1001, {from: citizen1}), errTypes.revert);
+    await tryCatch(tmpDatCtr.subscribe(1001, {from: citizen1}), errTypes.revert);
   });
 
   it("Suscribe DAT fails because ... non approuved contract address", async() => {
@@ -84,7 +84,7 @@ contract('DAT', async (accounts) => {
     await tmpMedCtr.incrementMonth({from: centralBankAcc});
     await tmpMedCtr.updateAccount(citizen1, {from: citizen1});
     await tmpMedCtr.approve(tmpDatCtr.address, 1002, {from: citizen1});
-    await tryCatch(tmpDatCtr.subscribeDat(1001, {from: citizen1}), errTypes.revert);
+    await tryCatch(tmpDatCtr.subscribe(1001, {from: citizen1}), errTypes.revert);
   });
 
   it("Suscribe DAT succeeds", async() => {
@@ -92,21 +92,23 @@ contract('DAT', async (accounts) => {
     let bal11 = await medCtr.balanceOf(citizen1);
     let bal12 = await medCtr.balanceOf(datCtr.address);
     await medCtr.approve(datCtr.address, 1002, {from: citizen1});
-    await datCtr.subscribeDat(1001, {from: citizen1});
+    await datCtr.subscribe(1001, {from: citizen1});
     let bal21 = await medCtr.balanceOf(citizen1);
     let bal22 = await medCtr.balanceOf(datCtr.address);
     let tokId = await fpCtr.getCurrentTokenId();
     let owner = await fpCtr.ownerOf(tokId);
     let subsLen = await datCtr.getSubscriptionLength();
+    let prod = await datCtr.getProduct(tokId);
     assert.equal(bal11 - bal21, 1001, "Correct amount removed from account");
     assert.equal(bal22 - bal12, 1001, "Correct amount added to account");
     assert.equal(owner, citizen1, "Token has been created and ownership is correct");
     assert.equal(subsLen, 1, "One subscription registered");
+    assert.equal(prod[1].toNumber(), 1001, "Correct amount in subscribed DAT");
   });
 
   it("Cancel someone else DAT", async() => {
     await medCtr.approve(datCtr.address, 1002, {from: citizen1});
-    await datCtr.subscribeDat(1001, {from: citizen1});
+    await datCtr.subscribe(1001, {from: citizen1});
     let tokId = await fpCtr.getCurrentTokenId();
     await tryCatch(datCtr.cancelDat(tokId, {from: citizen2}), errTypes.revert);
   });
@@ -116,20 +118,20 @@ contract('DAT', async (accounts) => {
     await medCtr.updateAccount(citizen2, {from: citizen2});
     let bal11 = await medCtr.balanceOf(citizen2);
     await medCtr.approve(datCtr.address, 1002, {from: citizen2});
-    await datCtr.subscribeDat(1001, {from: citizen2});
+    await datCtr.subscribe(1001, {from: citizen2});
     let tokId = await fpCtr.getCurrentTokenId();
     await datCtr.cancelDat(tokId, {from: citizen2});
     await tryCatch(fpCtr.ownerOf(tokId), errTypes.revert);
     let bal12 = await medCtr.balanceOf(citizen2);
     let subsLen2 = await datCtr.getSubscriptionLength();
-    assert.equal(bal11.toNumber()-bal12.toNumber(), 0, "Balance initial amount after cancelling");
+    assert.equal(bal11-bal12, 0, "Balance initial amount after cancelling");
     assert.equal(subsLen2 - subsLen1, 0, "No additional subscription");
   });
 
   it("Pay my DAT early should not be possible", async() => {
     await medCtr.updateAccount(citizen3, {from: citizen3});
     await medCtr.approve(datCtr.address, 1002, {from: citizen3});
-    await datCtr.subscribeDat(1001, {from: citizen3});
+    await datCtr.subscribe(1001, {from: citizen3});
     let tokId = await fpCtr.getCurrentTokenId();
     await tryCatch(datCtr.payDat(tokId, {from: citizen3}), errTypes.revert);
   });
@@ -138,7 +140,7 @@ contract('DAT', async (accounts) => {
     let bal11 = await medCtr.balanceOf(citizen3);
     await medCtr.updateAccount(citizen3, {from: citizen3});
     await medCtr.approve(datCtr.address, 2002, {from: citizen3});
-    await datCtr.subscribeDat(1500, {from: citizen3});
+    await datCtr.subscribe(1500, {from: citizen3});
     let tokId = await fpCtr.getCurrentTokenId();
     await medCtr.incrementDay({from: centralBankAcc});
     await medCtr.incrementDay({from: centralBankAcc});

@@ -35,17 +35,17 @@ contract('Marketplace', async (accounts) => {
 
     await medCtr.updateAccount(citizen1, {from: citizen1});
     await medCtr.approve(datCtr.address, 1002, {from: citizen1});
-    await datCtr.subscribeDat(200, {from: citizen1});
-    await datCtr.subscribeDat(212, {from: citizen1});
+    await datCtr.subscribe(200, {from: citizen1});
+    await datCtr.subscribe(212, {from: citizen1});
 
     await medCtr.updateAccount(citizen2, {from: citizen2});
     await medCtr.approve(datCtr.address, 1004, {from: citizen2});
-    await datCtr.subscribeDat(400, {from: citizen2});
-    await datCtr.subscribeDat(469, {from: citizen2});
+    await datCtr.subscribe(400, {from: citizen2});
+    await datCtr.subscribe(469, {from: citizen2});
 
     await medCtr.updateAccount(citizen3, {from: citizen3});
     await medCtr.approve(datCtr.address, 1004, {from: citizen3});
-    await datCtr.subscribeDat(311, {from: citizen3});
+    await datCtr.subscribe(311, {from: citizen3});
   });
 
   it("Public variables should be set by constructor", async() => {

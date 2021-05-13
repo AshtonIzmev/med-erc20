@@ -21,13 +21,7 @@ contract Factoring is GenericProduct {
 
     mapping (uint256 => Product) private _subscriptions;
 
-    /**
-     * param minimumAmount      minimum amount deposited
-     * param dayDuration        duration of the DAT (in days)
-     * param interestRate       interest rate of the DAT
-     */
     constructor (address medToken_, address fpToken_) {
-        _issuingBank = _msgSender();
         medToken = MED(medToken_);
         fpToken = FP(fpToken_);
     }
@@ -43,7 +37,7 @@ contract Factoring is GenericProduct {
     }
 
     /**
-     * Get a token in exchange of an invoice
+     * Validate an invoice
      */
     function validateInvoice(uint256 tokenId) public virtual {
         require(isSuscribed(tokenId), "Existing Factoring subscription");
@@ -64,4 +58,13 @@ contract Factoring is GenericProduct {
         fpToken.destroy(tokenId);
         _subscriptionIds.remove(tokenId);
     }
+
+    function getProduct(uint256 tokenId) public view virtual returns (address, uint256, uint256, bool) {
+        return (
+            _subscriptions[tokenId]._borrower,
+            _subscriptions[tokenId]._factoringDate,
+            _subscriptions[tokenId]._factoringAmount,
+            _subscriptions[tokenId]._validated);
+    }
+
 }
