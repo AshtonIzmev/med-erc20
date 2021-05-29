@@ -1,3 +1,5 @@
+! This repository has been migrated to AshtonIzmev/solidity-contracts
+
 # med-erc20
 Proposal for the implementation of an Ethereum ERC20 token with the following economic characteristics:
 * The token is melting, that is to say that its quantity decreases each day by a fixed percentage transferred to a specific account (the United States Department of the Treasury for example)
